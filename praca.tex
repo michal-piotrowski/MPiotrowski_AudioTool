@@ -1,0 +1,141 @@
+\documentclass[11pt]{aghdpl}
+\usepackage[english,polish]{babel}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% --- < bibliografia > ---
+
+\usepackage[
+style=numeric,
+sorting=none,
+%
+% Zastosuj styl wpisu bibliograficznego właściwy językowi publikacji.
+language=autobib,
+autolang=other,
+% Zapisuj datę dostępu do strony WWW w formacie RRRR-MM-DD.
+urldate=iso8601,
+% Nie dodawaj numerów stron, na których występuje cytowanie.
+backref=false,
+% Podawaj ISBN.
+isbn=true,
+% Nie podawaj URL-i, o ile nie jest to konieczne.
+url=false,
+%
+% Ustawienia związane z polskimi normami dla bibliografii.
+maxbibnames=3,
+% Jeżeli używamy BibTeXa:
+backend=bibtex
+]{biblatex}
+\usepackage{csquotes}
+% Ponieważ `csquotes` nie posiada polskiego stylu, można skorzystać z mocno zbliżonego stylu chorwackiego.
+\DeclareQuoteAlias{croatian}{polish}
+\addbibresource{bibliografia.bib}
+% ------------------------
+% --- < listingi > ---
+% Użyj czcionki kroju Courier.
+\usepackage{courier}
+
+\usepackage{listings}
+\lstloadlanguages{TeX}
+
+\lstset{
+	literate={ą}{{\k{a}}}1
+           {ć}{{\'c}}1
+           {ę}{{\k{e}}}1
+           {ó}{{\'o}}1
+           {ń}{{\'n}}1
+           {ł}{{\l{}}}1
+           {ś}{{\'s}}1
+           {ź}{{\'z}}1
+           {ż}{{\.z}}1
+           {Ą}{{\k{A}}}1
+           {Ć}{{\'C}}1
+           {Ę}{{\k{E}}}1
+           {Ó}{{\'O}}1
+           {Ń}{{\'N}}1
+           {Ł}{{\L{}}}1
+           {Ś}{{\'S}}1
+           {Ź}{{\'Z}}1
+           {Ż}{{\.Z}}1,
+	basicstyle=\footnotesize\ttfamily,
+}
+% ------------------------
+\AtBeginDocument{
+	\renewcommand{\tablename}{Tabela}
+	\renewcommand{\figurename}{Rys.}
+}
+% ------------------------
+% --- < tabele > ---
+
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage[flushleft]{threeparttable}
+
+% defines the X column to use m (\parbox[c]) instead of p (`parbox[t]`)
+\newcolumntype{C}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}
+%---------------------------------------------------------------------------
+
+\date{2015}
+
+\setlength{\cftsecnumwidth}{10mm}
+
+%---------------------------------------------------------------------------
+\setcounter{secnumdepth}{4}
+\brokenpenalty=10000\relax
+
+\begin{document}
+
+% Ponowne zdefiniowanie stylu `plain`, aby usunąć numer strony z pierwszej strony spisu treści i poszczególnych rozdziałów.
+\fancypagestyle{plain}
+{
+	% Usuń nagłówek i stopkę
+	\fancyhf{}
+	% Usuń linie.
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
+
+\setcounter{tocdepth}{2}
+\graphicspath{ {images/} }
+\clearpage
+\title{
+{\includegraphics[scale=0.8]{LogoAGH.jpg}  }\\
+{\fontfamily{phv}\selectfont \large \textbf{WYDZIAŁ ELEKTRONIKI, AUTOMATYKI, INFORMATYKI I INŻYNIERII BIOMEDYCZNEJ \\
+KATEDRA INFORMATYKI STOSOWANEJ}}\\
+{Praca dyplomowa inżynierska} \\
+{Aplikacja Webowa do przetwarzania ścieżek dźwiękowych}
+}
+\date{\today}
+\author{Michał Piotrowski}
+
+\maketitle
+\thispagestyle{empty} 
+{\large\itshape Uprzedzony o~odpowiedzialno\'sci karnej na~podstawie art.~115 ust.~1~i~2 ustawy z~dnia 4~lutego 1994~r. o~prawie autorskim i~prawach pokrewnych (t.j. Dz.U. z~2006~r. Nr~90, poz.~631 z~p{\'o}{\'z}n. zm.): ,,Kto przyw\l{}aszcza sobie autorstwo albo~wprowadza w~b\l{}\k{a}d co~do~autorstwa ca\l{}o\'sci lub cz\k{e}\'sci cudzego utworu albo~artystycznego wykonania, podlega grzywnie, karze ograniczenia wolno\'sci albo~pozbawienia wolno\'sci do~lat~3. Tej~samej karze podlega, kto~rozpowszechnia bez~podania nazwiska lub~pseudonimu tw\'orcy cudzy utw\'or w~wersji oryginalnej albo~w~postaci opracowania, artystycznego wykonania albo~publicznie zniekszta\l{}ca taki utw\'or, artystyczne wykonanie, fonogram, wideogram lub nadanie.'', a~tak\.ze uprzedzony o~odpowiedzialno\'sci dyscyplinarnej na~podstawie art.~211 ust.~1 ustawy z~dnia 27~lipca 2005~r. Prawo o~szkolnictwie wy\.zszym (t.j. Dz.~U. z~2012~r. poz.~572, z~p\'o\'zn. zm.): ,,Za~naruszenie przepis\'ow obowi\k{a}zuj\k{a}cych w~uczelni oraz~za~czyny uchybiaj\k{a}ce godno\'sci studenta student ponosi odpowiedzialno\'s\'c dyscyplinarn\k{a} przed komisj\k{a} dyscyplinarn\k{a} albo~przed s\k{a}dem kole\.ze\'nskim samorz\k{a}du studenckiego, zwanym dalej <<s\k{a}dem kole\.ze\'nskim>>.'', o\'swiadczam, \.ze~niniejsz\k{a} prac\k{e} dyplomow\k{a} wykona\l{}em(-am) osobi\'scie i~samodzielnie i~\.ze~nie~korzysta\l{}em(-am) ze~\'zr\'ode\l{} innych ni\.z~wymienione w pracy. }
+\clearpage
+\tableofcontents
+\chapter{Wprowadzenie}
+\section{Cel projektu} 
+\setlength{\parindent}{10ex} \par Celem projektu jest odpowiedź na potrzebę stworzenia łatwo dostępnego i intuicyjnego w użytkowaniu systemu do modyfikowania ścieżek dźwiękowych. Wraz z postępem technologicznym i dostępnością narzędzi do przechwytywania dźwięku instrumentów, ludzkiego głosu i z innych źródeł pożądanym staje się posiadanie w zasięgu ręki narzędzia które nie ogranicza kreatywności muzycznej przez swoje skomplikowanie czy potrzebę instalowania środowiska o dużych wymaganiach co do zasobów obliczeniowych i pamięciowych, a co za tym idzie bycia przywiązanym do swojej stacji roboczej do wykonania nawet najprostrzych operacji na dźwięku
+
+
+\chapter{Efekty dzwiekowe}
+
+\par
+Istotną częścią procesu tworzenia jest uwydatnienie najcenniejszych elementów nagranego dźwięku co jest umożliwione przez wypracowane przez lata algorytmy replikowanie analogowych efektów dźwiękowych w postaci cyfrowej 
+\section{Echo}
+\section{Pogłos}
+\section{Kompresja}
+\section{Korekcja Pasma (graficzna)}
+
+%\include{rozdzial3}
+
+\printbibliography
+
+\end{document}
